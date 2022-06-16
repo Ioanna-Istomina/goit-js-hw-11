@@ -35,16 +35,16 @@ async function onSubmitSearchForm(ev) {
     return;
   }
 
-  page.index = 1;
-  result = await fetchImages(searchResult, page.index); //результат поиска
-  let totalHits = result.data.totalHits; //количество найденных картинок
-  currentHits = result.data.hits.length;
-
-  totalHits > 40
-    ? button_load.classList.remove('is-hidden')
-    : button_load.classList.add('is-hidden');
-
   try {
+    page.index = 1;
+    result = await fetchImages(searchResult, page.index); //результат поиска
+    let totalHits = result.data.totalHits; //количество найденных картинок
+    currentHits = result.data.hits.length;
+
+    totalHits > 40
+      ? button_load.classList.remove('is-hidden')
+      : button_load.classList.add('is-hidden');
+
     if (totalHits > 0) {
       // отрисовка картинок по запросу
       notification.innerHTML = '';
